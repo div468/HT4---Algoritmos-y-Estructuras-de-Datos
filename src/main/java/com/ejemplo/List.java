@@ -2,7 +2,7 @@ package com.ejemplo;
 
 import java.util.Iterator;
 
-public interface List<E> 
+public interface List<E>
 {
 
    public int size();
