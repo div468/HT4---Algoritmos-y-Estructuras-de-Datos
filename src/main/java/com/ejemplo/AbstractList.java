@@ -1,3 +1,13 @@
+/*
+ * Universidad del Valle de Guatemala
+ * Algoritmos y Estructuras de Datos
+ * Ing. Douglas Barrios
+ * @author: Julián Divas
+ * Creación: 18/02/2025
+ * última modificación: 18/02/2025
+ * File Name: Abstract.java
+ * Descripción: Clase abstracta de las listas
+ */
 package com.ejemplo;
 public abstract class AbstractList<E>
        implements List<E>

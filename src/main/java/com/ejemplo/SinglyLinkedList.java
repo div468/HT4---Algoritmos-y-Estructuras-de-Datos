@@ -1,3 +1,13 @@
+/*
+ * Universidad del Valle de Guatemala
+ * Algoritmos y Estructuras de Datos
+ * Ing. Douglas Barrios
+ * @author: Julián Divas
+ * Creación: 18/02/2025
+ * última modificación: 18/02/2025
+ * File Name: SinglyLinkedList.java
+ * Descripción: Lista simple encadenada
+ */
 package com.ejemplo;
 public class SinglyLinkedList<E> extends AbstractList<E>
 {
