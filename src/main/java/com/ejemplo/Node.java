@@ -9,48 +9,67 @@
  * Descripción: Nodo de la lista encadenada simple
  */
 package com.ejemplo;
+/**
+ * Una implementación necesaria para una lista simplemente encadenada.
+ * @param <E> el tipo de elementos almacenados en la lista.
+ */
 public class Node<E>
 {
-   protected E data; // value stored in this element
-   protected Node<E> nextElement; // ref to next
+   protected E data; // Valor guardado en el elemento
+   protected Node<E> nextElement; // Referencia al siguiente elemento
 
+   /**
+    * @param v El valor a guardar en la lista
+    * @param next La feretencia al siguiente elemento en la lista
+    */
    public Node(E v, Node<E> next)
-   // pre: v is a value, next is a reference to 
-   //      remainder of list
-   // post: an element is constructed as the new 
-   //      head of list
    {
+      //Se constrye un nuevo nodo en la lista
        data = v;
        nextElement = next;
    }
 
+   /**
+    * @param v el valor a añadir en el nodo de la lista
+    */
    public Node(E v)
-   // post: constructs a new tail of a list with value v
    {
+      //Se construye el nodo de la cola de la lista
       this(v,null);
    }
 
+   /**
+   * @return la referencia al siguiente elemento de la lista
+   */
    public Node<E> next()
-   // post: returns reference to next value in list
    {
       return nextElement;
    }
 
+   /**
+    * @param next la referencia nueva al siguiente nuevo valor
+    */
    public void setNext(Node<E> next)
-   // post: sets reference to new next value
    {
+      //Asigna la referencia al siguiente valor
       nextElement = next;
    }
 
+   /**
+    * @return el valor asociado al nodo
+    */
    public E value()
-   // post: returns value associated with this element
    {
+      //Devuelve el valor correspondiente
       return data;
    }
 
+   /**
+    * @param value el valor a asociar al nodo
+    */
    public void setValue(E value)
-   // post: sets value associated with this element
    {
+      //Se asigna el valor al nodo
       data = value;
    }
 }

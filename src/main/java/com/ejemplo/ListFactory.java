@@ -10,7 +10,10 @@
  */
 
 package com.ejemplo;
-
+/*
+ * Utilización del patrón de diseño Factory para la elección del tipo de lista a usarse dentro del programa.
+ * @param <E> el tipo de elementos almacenados en la lsita
+ */
 public class ListFactory<E> {
     public List<E> geList(String listasolicitada){
         if(listasolicitada.equals("Simple")){
