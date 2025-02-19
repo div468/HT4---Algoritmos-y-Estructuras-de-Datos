@@ -1,7 +1,7 @@
 package com.ejemplo;
 
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Vector;
 
 /**
  * Universidad del Valle de Guatemala
@@ -13,15 +13,14 @@ import java.util.Vector;
  * Alejandro Jeréz - 24678
  * Creación: 18/02/2025
  * última modificación: 18/02/2025
- * File Name: StackVector.java
- * Descripción: Implementación de una pila basada en Vector
+ * File Name: StackArrayList.java
+ * Descripción: Implementación de una pila basada en ArrayList
  */
-public class StackVector<E> extends StackAbstract<E> 
-{
-    private Vector<E> stack;
+public class StackArrayList<E> extends StackAbstract<E> {
+    private ArrayList<E> stack;
     
-    public StackVector() {
-        stack = new Vector<>();
+    public StackArrayList() {
+        stack = new ArrayList<>();
     }
     
     @Override
@@ -38,7 +37,7 @@ public class StackVector<E> extends StackAbstract<E>
     @Override
     public E peek() {
         if (isEmpty()) throw new IllegalStateException("El stack está vacío");
-        return stack.lastElement();
+        return stack.get(stack.size() - 1);
     }
     
     @Override

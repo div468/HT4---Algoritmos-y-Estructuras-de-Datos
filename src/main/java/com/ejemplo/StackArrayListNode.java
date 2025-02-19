@@ -8,35 +8,29 @@
  * Alejandro Jeréz - 24678
  * Creación: 18/02/2025
  * última modificación: 18/02/2025
- * File Name: StackNode.java
- * Descripción: Nodo del stack basado en Vector
+ * File Name: StackArrayNode.java
+ * Descripción: Nodo de la pila basada en ArrayList
  */
-
 package com.ejemplo;
 
-/**
- * Clase que define un nodo para la implementación de un stack basado en Vector
- * @param <E> Tipo de dato que se almacenará en el nodo
- */
-
-public class StackVectorNode<E> {
+public class StackArrayListNode<E> {
     protected E data; // Valor almacenado en el nodo
-    protected StackVectorNode<E> nextElement; // Referencia al siguiente nodo
+    protected StackArrayListNode<E> nextElement; // Referencia al siguiente nodo
 
-    public StackVectorNode(E value, StackVectorNode<E> next) {
+    public StackArrayListNode(E value, StackArrayListNode<E> next) {
         data = value;
         nextElement = next;
     }
 
-    public StackVectorNode(E value) {
+    public StackArrayListNode(E value) {
         this(value, null);
     }
 
-    public StackVectorNode<E> next() {
+    public StackArrayListNode<E> next() {
         return nextElement;
     }
 
-    public void setNext(StackVectorNode<E> next) {
+    public void setNext(StackArrayListNode<E> next) {
         nextElement = next;
     }
 
