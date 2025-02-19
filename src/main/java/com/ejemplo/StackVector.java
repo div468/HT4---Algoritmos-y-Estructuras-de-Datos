@@ -12,40 +12,84 @@ import java.util.Vector;
  * Julián Divas - 24687
  * Alejandro Jeréz - 24678
  * Creación: 18/02/2025
- * última modificación: 18/02/2025
- * File Name: StackVector.java
- * Descripción: Implementación de un Stack basado en Vector
+ * Última modificación: 18/02/2025
+ * Nombre del archivo: StackVector.java
+ * 
+ * Descripción: 
+ * Implementación de un Stack (pila) utilizando la clase Vector de Java.
+ * Esta clase hereda de StackAbstract y proporciona métodos para manipular
+ * una pila, como push, pop, peek, size e iterator.
+ * 
+ * @param <E> El tipo de elementos que contendrá el stack.
  */
-public class StackVector<E> extends StackAbstract<E> 
-{
-    private Vector<E> stack;
-    
+public class StackVector<E> extends StackAbstract<E> {
+
+    private Vector<E> stack; // Vector que almacena los elementos del stack.
+
+    /**
+     * Constructor de la clase StackVector.
+     * Inicializa un Vector vacío para almacenar los elementos del stack.
+     */
     public StackVector() {
         stack = new Vector<>();
     }
-    
+
+    /**
+     * Agrega un elemento a la parte superior del stack.
+     * 
+     * @param item El elemento a agregar.
+     * @post El elemento se coloca en la parte superior del stack.
+     */
     @Override
     public void push(E item) {
         stack.add(item);
     }
-    
+
+    /**
+     * Elimina y devuelve el elemento en la parte superior del stack.
+     * 
+     * @return El elemento eliminado de la parte superior del stack.
+     * @throws IllegalStateException Si el stack está vacío.
+     * @pre El stack no debe estar vacío.
+     * @post El elemento superior es eliminado y devuelto.
+     */
     @Override
     public E pop() {
         if (isEmpty()) throw new IllegalStateException("El stack está vacío");
         return stack.remove(stack.size() - 1);
     }
-    
+
+    /**
+     * Devuelve el elemento en la parte superior del stack sin eliminarlo.
+     * 
+     * @return El elemento en la parte superior del stack.
+     * @throws IllegalStateException Si el stack está vacío.
+     * @pre El stack no debe estar vacío.
+     * @post El elemento superior es devuelto sin ser eliminado.
+     */
     @Override
     public E peek() {
         if (isEmpty()) throw new IllegalStateException("El stack está vacío");
         return stack.lastElement();
     }
-    
+
+    /**
+     * Devuelve el número de elementos en el stack.
+     * 
+     * @return El número de elementos en el stack.
+     * @post Devuelve la cantidad de elementos en el stack.
+     */
     @Override
     public int size() {
         return stack.size();
     }
-    
+
+    /**
+     * Devuelve un iterador para recorrer los elementos del stack.
+     * 
+     * @return Un iterador que permite recorrer los elementos del stack en orden.
+     * @post Devuelve un iterador para recorrer el stack.
+     */
     @Override
     public Iterator<E> iterator() {
         return stack.iterator();
