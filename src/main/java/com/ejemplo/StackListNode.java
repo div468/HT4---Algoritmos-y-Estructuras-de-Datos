@@ -8,30 +8,31 @@
  * Alejandro Jeréz - 24678
  * Creación: 18/02/2025
  * última modificación: 18/02/2025
- * File Name: StackArrayListNode.java
- * Descripción: Nodo del stack basado en ArrayList
+ * File Name: StackListNode.java
+ * Descripción: Nodo del stack basado en listas enlazadas
  */
+
 package com.ejemplo;
 
-public class StackArrayListNode<E> 
+public class StackListNode<E> 
 {
-    protected E data; // Valor almacenado en el nodo
-    protected StackArrayListNode<E> nextElement; // Referencia al siguiente nodo
+    protected E data;
+    protected StackListNode<E> nextElement;
 
-    public StackArrayListNode(E value, StackArrayListNode<E> next) {
+    public StackListNode(E value, StackListNode<E> next) {
         data = value;
         nextElement = next;
     }
 
-    public StackArrayListNode(E value) {
+    public StackListNode(E value) {
         this(value, null);
     }
 
-    public StackArrayListNode<E> next() {
+    public StackListNode<E> next() {
         return nextElement;
     }
 
-    public void setNext(StackArrayListNode<E> next) {
+    public void setNext(StackListNode<E> next) {
         nextElement = next;
     }
 

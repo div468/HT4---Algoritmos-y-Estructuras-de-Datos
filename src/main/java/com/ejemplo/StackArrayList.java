@@ -14,9 +14,10 @@ import java.util.Iterator;
  * Creación: 18/02/2025
  * última modificación: 18/02/2025
  * File Name: StackArrayList.java
- * Descripción: Implementación de una pila basada en ArrayList
+ * Descripción: Implementación de un Stack basado en ArrayList
  */
-public class StackArrayList<E> extends StackAbstract<E> {
+public class StackArrayList<E> extends StackAbstract<E> 
+{
     private ArrayList<E> stack;
     
     public StackArrayList() {

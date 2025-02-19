@@ -14,7 +14,7 @@ import java.util.Vector;
  * Creación: 18/02/2025
  * última modificación: 18/02/2025
  * File Name: StackVector.java
- * Descripción: Implementación de una pila basada en Vector
+ * Descripción: Implementación de un Stack basado en Vector
  */
 public class StackVector<E> extends StackAbstract<E> 
 {

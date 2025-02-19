@@ -19,7 +19,8 @@ package com.ejemplo;
  * @param <E> Tipo de dato que se almacenará en el nodo
  */
 
-public class StackVectorNode<E> {
+public class StackVectorNode<E> 
+{
     protected E data; // Valor almacenado en el nodo
     protected StackVectorNode<E> nextElement; // Referencia al siguiente nodo
 
