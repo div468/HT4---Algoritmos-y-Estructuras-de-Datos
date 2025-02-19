@@ -31,8 +31,8 @@ public class StackList<E> extends StackAbstract<E> {
      * 
      * @param list Implementación de la interfaz List que se utilizará como estructura subyacente.
      */
-    public StackList(List<E> list) {
-        this.list = list;
+    public StackList(String tipoLista) {
+        this.list = ListFactory.getList(tipoLista);
     }
 
     /**
