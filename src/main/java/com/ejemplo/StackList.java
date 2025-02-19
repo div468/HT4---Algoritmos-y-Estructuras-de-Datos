@@ -15,24 +15,24 @@ import java.util.Iterator;
  * Nombre del archivo: StackList.java
  * 
  * Descripción: 
- * Implementación de un Stack (pila) utilizando una lista enlazada.
- * Esta clase hereda de StackAbstract y proporciona métodos para manipular
- * una pila, como push, pop, peek, size e iterator.
+ * Implementación de un Stack (pila) utilizando una lista (List) como estructura subyacente.
+ * Esta clase hereda de StackAbstract y puede usar cualquier implementación de List,
+ * como SingleLinkedList o DoubleLinkedList, para manejar los elementos del stack.
  * 
  * @param <E> El tipo de elementos que contendrá el stack.
  */
 public class StackList<E> extends StackAbstract<E> {
 
-    private StackListNode<E> head; // Referencia al primer nodo de la lista enlazada.
-    private int size; // Tamaño actual del stack.
+    private List<E> list; // Lista subyacente para almacenar los elementos del stack.
 
     /**
      * Constructor de la clase StackList.
-     * Inicializa un stack vacío con head nulo y tamaño 0.
+     * Inicializa el stack con una implementación de List (por ejemplo, SingleLinkedList o DoubleLinkedList).
+     * 
+     * @param list Implementación de la interfaz List que se utilizará como estructura subyacente.
      */
-    public StackList() {
-        head = null;
-        size = 0;
+    public StackList(List<E> list) {
+        this.list = list;
     }
 
     /**
@@ -43,8 +43,7 @@ public class StackList<E> extends StackAbstract<E> {
      */
     @Override
     public void push(E item) {
-        head = new StackListNode<>(item, head);
-        size++;
+        list.addFirst(item); // Agrega el elemento al inicio de la lista (parte superior del stack).
     }
 
     /**
@@ -58,10 +57,7 @@ public class StackList<E> extends StackAbstract<E> {
     @Override
     public E pop() {
         if (isEmpty()) throw new IllegalStateException("El stack está vacío");
-        E value = head.value();
-        head = head.next();
-        size--;
-        return value;
+        return list.removeFirst(); // Elimina y devuelve el primer elemento de la lista.
     }
 
     /**
@@ -75,7 +71,7 @@ public class StackList<E> extends StackAbstract<E> {
     @Override
     public E peek() {
         if (isEmpty()) throw new IllegalStateException("El stack está vacío");
-        return head.value();
+        return list.getFirst(); // Devuelve el primer elemento de la lista sin eliminarlo.
     }
 
     /**
@@ -86,7 +82,18 @@ public class StackList<E> extends StackAbstract<E> {
      */
     @Override
     public int size() {
-        return size;
+        return list.size(); // Devuelve el tamaño de la lista.
+    }
+
+    /**
+     * Verifica si el stack está vacío.
+     * 
+     * @return true si el stack no contiene elementos, false en caso contrario.
+     * @post Devuelve true si el stack está vacío, false si no lo está.
+     */
+    @Override
+    public boolean isEmpty() {
+        return list.isEmpty(); // Verifica si la lista está vacía.
     }
 
     /**
@@ -97,32 +104,6 @@ public class StackList<E> extends StackAbstract<E> {
      */
     @Override
     public Iterator<E> iterator() {
-        return new Iterator<E>() {
-            private StackListNode<E> current = head; // Referencia al nodo actual durante la iteración.
-
-            /**
-             * Verifica si hay más elementos en el stack para iterar.
-             * 
-             * @return true si hay más elementos, false en caso contrario.
-             */
-            @Override
-            public boolean hasNext() {
-                return current != null;
-            }
-
-            /**
-             * Devuelve el siguiente elemento en el stack y avanza el iterador.
-             * 
-             * @return El siguiente elemento en el stack.
-             * @throws IllegalStateException Si no hay más elementos para iterar.
-             */
-            @Override
-            public E next() {
-                if (!hasNext()) throw new IllegalStateException("No hay más elementos");
-                E value = current.value();
-                current = current.next();
-                return value;
-            }
-        };
+        return list.iterator(); // Devuelve el iterador de la lista.
     }
 }
