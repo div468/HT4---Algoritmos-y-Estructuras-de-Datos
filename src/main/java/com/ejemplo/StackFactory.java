@@ -12,9 +12,9 @@
 
 package com.ejemplo;
 /*
- * Utilización del patrón de diseño Factory para la elección del tipo de stack a usarse dentro del programa.
- * @param <E> el tipo de elementos almacenados en el stack
- */
+* Utilización del patrón de diseño Factory para la elección del tipo de stack a usarse dentro del programa.
+* @param <E> el tipo de elementos almacenados en el stack
+*/
 public class StackFactory<E> {
     public Stack<E> getStack(String stackSolicitado){
         if(stackSolicitado.equals("Vector")){
