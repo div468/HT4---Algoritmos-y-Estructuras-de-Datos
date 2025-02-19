@@ -15,11 +15,11 @@ package com.ejemplo;
  * @param <E> el tipo de elementos almacenados en la lsita
  */
 public class ListFactory<E> {
-    public List<E> geList(String listasolicitada){
-        if(listasolicitada.equals("Simple")){
+    public static <E> List<E> getList(String listasolicitada){
+        if(listasolicitada.equalsIgnoreCase("Simple")){
             return new SinglyLinkedList<E>();
         }
-        else if (listasolicitada.equals("Doble")){
+        else if (listasolicitada.equalsIgnoreCase("Doble")){
             return new DoublyLinkedList<E>();
         }
         else {

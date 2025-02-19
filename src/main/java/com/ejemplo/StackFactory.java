@@ -15,18 +15,16 @@ package com.ejemplo;
 * Utilización del patrón de diseño Factory para la elección del tipo de stack a usarse dentro del programa.
 * @param <E> el tipo de elementos almacenados en el stack
 */
-public class StackFactory<E> {
-    public Stack<E> getStack(String stackSolicitado){
-        if(stackSolicitado.equals("Vector")){
-            return new StackVector<E>();
-        }
-        else if (stackSolicitado.equals("ArrayList")){
-            return new StackArrayList<E>();
-        }
-        else if (stackSolicitado.equals("List")){
-            return new StackList<E>();
-        }
-        else {
+public class StackFactory {
+    public static <E> Stack<E> getStack(String stackSolicitado) {
+        if (stackSolicitado.equalsIgnoreCase("Vector")) {
+            return new StackVector<>();
+        } else if (stackSolicitado.equalsIgnoreCase("ArrayList")) {
+            return new StackArrayList<>();
+        } else if (stackSolicitado.equalsIgnoreCase("Simple") || stackSolicitado.equalsIgnoreCase("Doble")) {
+            // Si el usuario elige una lista, se obtiene desde ListFactory
+            return new StackList<>(stackSolicitado);
+        } else {
             throw new IllegalArgumentException("Este tipo de stack no existe: " + stackSolicitado);
         }
     }
