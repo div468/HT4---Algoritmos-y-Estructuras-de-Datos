@@ -10,8 +10,8 @@
  * Descripción: Interfaz que define métodos para manejar un sistema que incluye push, pop, peek, empty y size.
  */
 
-import java.util.Iterator;
 package com.ejemplo;
+import java.util.Iterator;
 
 public interface Stack<E> 
 {
