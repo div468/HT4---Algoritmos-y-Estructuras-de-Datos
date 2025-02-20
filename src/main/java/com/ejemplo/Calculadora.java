@@ -32,22 +32,8 @@ public class Calculadora {
         // Obtener la instancia de la Calculadora (Singleton)
         Calculadora calculadora = Calculadora.getInstancia(eleccion);
 
-        // Leer la expresión infix desde el archivo datos.txt
-        String expresionInfix = calculadora.leerArchivo();
-
-        // Convertir la expresión infix a postfix
-        String expresionPostfix = calculadora.infixAPostfix(expresionInfix);
-
-        // Guardar la expresión postfix en datosPostFix.txt
-        calculadora.guardarPostfix(expresionPostfix);
-
-        // Evaluar la expresión postfix
-        int resultado = calculadora.evaluarPostfix(expresionPostfix);
-
-        // Mostrar resultados en consola
-        System.out.println("Expresión Infix: " + expresionInfix);
-        System.out.println("Expresión Postfix: " + expresionPostfix);
-        System.out.println("Resultado: " + resultado);
+        // Ejecuta la lectura del archivo, y su traducción y evaluación indiviualmente
+        calculadora.procesarArchivo();
     }
 
     // Método para mostrar el menú y seleccionar la implementación del stack
@@ -92,50 +78,79 @@ public class Calculadora {
     }
 
     // Método para leer el archivo datos.txt
-    public String leerArchivo() {
-        StringBuilder contenido = new StringBuilder();
-        try (Scanner scanner = new Scanner(new File("datos.txt"))) {
+    public void procesarArchivo() {
+        try (Scanner scanner = new Scanner(new File("datos.txt"));
+            FileWriter writer = new FileWriter("datosPostFix.txt")) {
+    
             while (scanner.hasNextLine()) {
-                contenido.append(scanner.nextLine()).append("\n");
+                String expresionInfix = scanner.nextLine().trim();
+    
+                if (!expresionInfix.isEmpty()) { // Evita líneas vacías
+                    String expresionPostfix = infixAPostfix(expresionInfix);
+                    int resultado = evaluarPostfix(expresionPostfix);
+    
+                    // Imprimir en consola
+                    System.out.println("Expresión Infix: " + expresionInfix);
+                    System.out.println("Expresión Postfix: " + expresionPostfix);
+                    System.out.println("Resultado: " + resultado);
+                    System.out.println("----------------------------");
+    
+                    // Guardar en archivo
+                    writer.write(expresionPostfix + " = " + resultado + "\n");
+                }
             }
         } catch (IOException e) {
-            System.err.println("Error al leer el archivo datos.txt: " + e.getMessage());
+            System.err.println("Error al leer el archivo: " + e.getMessage());
         }
-        return contenido.toString().trim(); // Elimina el último salto de línea
     }
 
     // Método para convertir una expresión infix a postfix
     public String infixAPostfix(String expresionInfix) {
         StringBuilder postfix = new StringBuilder();
         stack.push("#"); // Carácter especial para evitar underflow
-
-        for (char ch : expresionInfix.toCharArray()) {
+        StringBuilder numero = new StringBuilder();
+    
+        for (int i = 0; i < expresionInfix.length(); i++) {
+            char ch = expresionInfix.charAt(i);
+    
             if (Character.isDigit(ch)) {
-                postfix.append(ch).append(" "); // Agrega dígitos directamente
-            } else if (ch == '(') {
-                stack.push(String.valueOf(ch)); // Apila paréntesis de apertura
-            } else if (ch == ')') {
-                // Desapila hasta encontrar el paréntesis de apertura
-                while (!stack.isEmpty() && !stack.peek().equals("(")) {
-                    postfix.append(stack.pop()).append(" ");
+                numero.append(ch); // Construye el número completo
+            } else {
+                if (numero.length() > 0) {
+                    postfix.append(numero).append(" "); // Agrega el número completo
+                    numero.setLength(0); // Reinicia el buffer
                 }
-                stack.pop(); // Elimina el paréntesis de apertura
-            } else if (esOperador(ch)) {
-                // Desapila operadores con mayor o igual precedencia
-                while (!stack.isEmpty() && precedencia(ch) <= precedencia(stack.peek().charAt(0))) {
-                    postfix.append(stack.pop()).append(" ");
+                if (ch == '(') {
+                    stack.push(String.valueOf(ch)); // Apila paréntesis de apertura
+                } else if (ch == ')') {
+                    // Desapila hasta encontrar el paréntesis de apertura
+                    while (!stack.isEmpty() && !stack.peek().equals("(")) {
+                        postfix.append(stack.pop()).append(" ");
+                    }
+                    stack.pop(); // Elimina el paréntesis de apertura
+                } else if (esOperador(ch)) {
+                    // Desapila operadores con mayor o igual precedencia
+                    while (!stack.isEmpty() && precedencia(ch) <= precedencia(stack.peek().charAt(0))) {
+                        postfix.append(stack.pop()).append(" ");
+                    }
+                    stack.push(String.valueOf(ch)); // Apila el operador actual
                 }
-                stack.push(String.valueOf(ch)); // Apila el operador actual
             }
         }
-
-        // Desapila los operadores restantes
+    
+        // Agregar cualquier número que haya quedado pendiente
+        if (numero.length() > 0) {
+            postfix.append(numero).append(" ");
+        }
+    
+        // Desapilar los operadores restantes
         while (!stack.isEmpty() && !stack.peek().equals("#")) {
             postfix.append(stack.pop()).append(" ");
         }
-
+    
         return postfix.toString().trim(); // Elimina el espacio final
     }
+    
 
     // Método para evaluar una expresión postfix
     public int evaluarPostfix(String expresionPostfix) {
