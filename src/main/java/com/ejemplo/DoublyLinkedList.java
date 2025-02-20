@@ -8,6 +8,13 @@
  * File Name: ListFactory.java
  * Descripción: Lista doblemente encadenada
  */
+
+/**
+ * Implementación de una lista doblemente enlazada en Java.
+ * Este código fue generado por DeepSeek (https://www.deepseek.com) y adaptado para su uso en este proyecto.
+ * Modificaciones realizadas por Julián Divas el 20/02/2025
+ */
+
 package com.ejemplo;
 import java.util.Iterator;
 import java.util.NoSuchElementException;

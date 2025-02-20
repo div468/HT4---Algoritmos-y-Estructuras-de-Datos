@@ -8,6 +8,12 @@
  * File Name: SinglyLinkedList.java
  * Descripción: Lista simple encadenada
  */
+
+ /*
+ * Implementación de una lista simplemente enlazada en Java.
+ * Este código fue generado por DeepSeek (https://www.deepseek.com) y adaptado para su uso en este proyecto.
+ * Modificaciones realizadas por Julián Divas el 20/02/2025
+ */
 package com.ejemplo;
 
 import java.util.Iterator;
