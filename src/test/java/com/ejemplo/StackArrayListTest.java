@@ -1,9 +1,29 @@
+/**
+ * Universidad del Valle de Guatemala
+ * Algoritmos y Estructuras de datos
+ * Ing. Douglas Barrios
+ * Colaboradores: 
+ * Marcelo Detlefsen - 24554
+ * Julián Divas - 24687
+ * Alejandro Jeréz - 24678
+ * Fecha: 19/02/2025
+ * 
+ * Descripción: 
+ * Pruebas unitarias para la clase StackArrayList.
+ */
+
 package test.java.com.ejemplo;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Clase de prueba para StackArrayList.
+ */
 class StackArrayListTest {
 
+    /**
+     * Prueba el método push.
+     */
     @Test
     void testPush() {
         StackArrayList<Integer> stack = new StackArrayList<>();
@@ -12,6 +32,9 @@ class StackArrayListTest {
         assertEquals(1, stack.peek());
     }
 
+    /**
+     * Prueba el método pop.
+     */
     @Test
     void testPop() {
         StackArrayList<Integer> stack = new StackArrayList<>();
@@ -21,6 +44,9 @@ class StackArrayListTest {
         assertTrue(stack.isEmpty());
     }
 
+    /**
+     * Prueba el método peek.
+     */
     @Test
     void testPeek() {
         StackArrayList<Integer> stack = new StackArrayList<>();
@@ -28,6 +54,9 @@ class StackArrayListTest {
         assertEquals(1, stack.peek());
     }
 
+    /**
+     * Prueba el método size.
+     */
     @Test
     void testSize() {
         StackArrayList<Integer> stack = new StackArrayList<>();
@@ -36,6 +65,9 @@ class StackArrayListTest {
         assertEquals(2, stack.size());
     }
 
+    /**
+     * Prueba el método isEmpty.
+     */
     @Test
     void testIsEmpty() {
         StackArrayList<Integer> stack = new StackArrayList<>();
