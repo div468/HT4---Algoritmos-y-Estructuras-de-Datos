@@ -18,6 +18,8 @@ import java.util.Iterator;
  * Implementación de un Stack (pila) utilizando una lista (List) como estructura subyacente.
  * Esta clase hereda de StackAbstract y puede usar cualquier implementación de List,
  * como SingleLinkedList o DoubleLinkedList, para manejar los elementos del stack.
+ * Este código fue generado por DeepSeek (https://www.deepseek.com) y adaptado para su uso en este proyecto.
+ * Modificaciones realizadas por Marcelo Detlefsen el 18/02/2025
  * 
  * @param <E> El tipo de elementos que contendrá el stack.
  */

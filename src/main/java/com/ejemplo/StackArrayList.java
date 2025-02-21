@@ -19,6 +19,8 @@ import java.util.Iterator;
  * Implementación de un Stack (pila) utilizando la clase ArrayList de Java.
  * Esta clase hereda de StackAbstract y proporciona métodos para manipular
  * una pila, como push, pop, peek, size e iterator.
+ * Este código fue generado por DeepSeek (https://www.deepseek.com) y adaptado para su uso en este proyecto.
+ * Modificaciones realizadas por Marcelo Detlefsen el 18/02/2025
  * 
  * @param <E> El tipo de elementos que contendrá el stack.
  */

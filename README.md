@@ -7,6 +7,9 @@
 # Referencias
 DeepSeek. (2023). Código de implementación de una lista doblemente enlazada en Java.
 DeepSeek. (2023). Código de implementación de una lista simplemente enlazada en Java.
+DeepSeek. (2023). Implementación de un Stack basado en listas enlazadas. 
+DeepSeek. (2023). Implementación de un Stack basado en ArrayList.
+DeepSeek. (2023). Implementación de un Stack basado en Vector.
 
 
 # Compilación
